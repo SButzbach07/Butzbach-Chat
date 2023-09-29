@@ -16,6 +16,9 @@ Source code can be found by browsing this repository. It can also be found in Re
 You can use the chat app on Replit.
 [Use Butzbach Chat on Replit](https://butzbach-chat.sbutzbach07.repl.co)
 
+You can also use the chat app on Render (See _Changes to app hosting_ for more info).
+[Use Butzbach Chat on Render](https://butzbach-chat.onrender.com)
+
 You can also use the chat app on my website.
 [Use Butzbach Chat on scot.butzbach.net](https://scot.butzbach.net/chat.php)
 
@@ -82,7 +85,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * yellgoofy
 * zzzzsnore
 
-## Changes in app hosting
+## Changes to app hosting
 On September 28, 2023, a notice was published on Replit concerning hosting changes. Their _Deployment_ feature will be the only way to host things on Replit as they are deprecating their _Always On_ hosting feature, which will be removed on January 1, 2024. Deployments are available on Pro and Hacker plans, along with monthly Cycle billing, meaning access to my chat app on Replit will no longer be available since I have a Free plan.
 
 I made the decision to host my app on [Render](https://render.com) for free, with a similar system environment to Replit. Butzbach Chat on scot.butzbach.net will be utilizing the chat app on Render instead of the app on Replit. The Replit host for Butzbach Chat will still be available until January 1, 2024, when _Always On_ is removed from Replit.
