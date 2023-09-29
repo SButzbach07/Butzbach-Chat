@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Butzbach Chat</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="google-site-verification" content="Rlj_mH5dNvT9LqHgKhj7Bmj8DjdpVAqZ9AiWouJMu6U">
+		<link rel="icon" href="https://scot.butzbach.net/assets/site/favicon.png" type="image/png">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<style type="text/css">
+			body {
+				background-color: black;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			}
+
+			.chatContainer {
+				display: flex;
+				height: 76vh;
+				width: 98.7vw;
+			}
+
+			#chat {
+				flex: 68%;
+			}
+
+			.users {
+				flex: 30%;
+			}
+
+			#message {
+				width: 50vw;
+			}
+
+			#chat, .users {
+				font-family: 'Courier New';
+				overflow-y: auto;
+			}
+
+			.separation {
+				flex: 1%;
+			}
+
+			body, #message, .chatButton {
+				color: white;
+			}
+
+			.chatButton {
+				font-weight: bold;
+				padding: 2.5px;
+			}
+
+			.title, #chat, .users {
+				padding-left: 25px;
+				padding-right: 25px;
+			}
+
+			#chat, #message, .users, .chatButton {
+				background-color: #151515;
+				border: 10px solid #333;
+				border-radius: 5px;
+			}
+
+			#chat p, #message {
+				font-size: 16px;
+			}
+
+			.topButton, .closeButton {
+				float: right;
+			}
+
+			#chatModal, #settingsModal {
+				background-color: rgba(0, 0, 0, 0.5);
+				display: none;
+				height: 100%;
+				left: 0;
+				overflow: auto;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 1;
+			}
+
+			.modalContent {
+				background-color: #333;
+				border: 1px solid white;
+				margin: 15% auto;
+				padding: 20px;
+				width: 350px;
+			}
+
+			.closeButton:hover, .closeButton:focus {
+				cursor: pointer;
+				text-decoration: none;
+			}
+		</style>
+		<script src="/socket.io/socket.io.min.js"></script>
+	</head>
+	<body>
+		<h2 class="title">
+			Butzbach Chat (<span id="connected">Not Connected</span>)
+			<button class="chatButton topButton" onclick="openModal('chatModal')">Chat Room</button>
+		</h2>
+		<div class="chatContainer">
+			<div id="chat"></div>
+			<div class="separation"></div>
+			<div class="users">
+				<h2>Room Status</h2>
+				<p>
+					User Name: <span id="userNameLabel"></span><br>
+					Room Name: <span id="roomNameLabel"></span><br>
+					Room Code: <span id="roomCodeLabel"></span><br>
+					Chat Filter: <span id="chatFilterLabel"></span><br>
+					User Count: <span id="userCounter"></span>
+				</p>															
+				<hr>
+				<div id="usersInRoom"></div>
+			</div>
+		</div><br>
+		<input type="text" id="message" placeholder="Type a message and press Enter or Return...">
+		<button class="chatButton" onclick="send()">Send</button>
+		<button class="chatButton" onclick="openModal('settingsModal')">Settings</button>
+		<div id="chatModal">
+			<div class="modalContent">
+				<span class="closeButton" onclick="closeModal('chatModal')"><i class="fa-solid fa-xmark"></i></span>
+				<h3>Create/Join Chat Room</h3>
+				<p>
+					User Name: <input type="text" id="userName"><br>
+					Chat Room: <input type="text" id="chatRoom" placeholder="Name = Create, Code = Join">
+				</p>
+				<button onclick="createRoom(document.getElementById('userName').value, document.getElementById('chatRoom').value)">Create Room</button>
+				<button onclick="joinRoom(document.getElementById('userName').value, document.getElementById('chatRoom').value)">Join Room</button>
+				<button onclick="leaveRoom()">Leave Room</button>
+			</div>
+		</div>
+		<div id="settingsModal">
+			<div class="modalContent">
+				<span class="closeButton" onclick="closeModal('settingsModal')"><i class="fa-solid fa-xmark"></i></span>
+				<h3>Chat Settings</h3>
+				<p title="Prevents any new sounds from being played, but does not stop any sounds currently playing.">
+					Disable Audio: <input type="checkbox" id="disableAudio" value="yes">
+				</p>
+			</div>
+		</div>
+		<script src="https://scot.butzbach.net/projects/javascript_audio/audio.js"></script>
+		<script src="/client.js"></script>
+	</body>
+</html>
