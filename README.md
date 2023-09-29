@@ -16,7 +16,7 @@ Source code can be found by browsing this repository. It can also be found in Re
 You can use the chat app on Replit.
 [Use Butzbach Chat on Replit](https://butzbach-chat.sbutzbach07.repl.co)
 
-You can also use the chat app on Render (See _Changes to app hosting_ for more info).
+You can also use the chat app on Render (See _[Changes to app hosting](#changes-to-app-hosting)_ for more info).
 [Use Butzbach Chat on Render](https://butzbach-chat.onrender.com)
 
 You can also use the chat app on my website.
