@@ -24,6 +24,8 @@ The developmental version of the app can be found below on Replit, along with th
 
 [Use Butzbach Chat (Development) on Replit](https://butzbach-chat-development.sbutzbach07.repl.co)
 
+Give Render a minute to wake up the chat app before using it. You'll know when it's ready when you see the welcome message.
+
 ## Features
 This project has many features available to everyone.
 * Command System: Use `/help` to list all available commands, or use `/help [command_name]` to see the command format, what the command does, and the number of arguments it takes. These commands are argument-sensitive.
