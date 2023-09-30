@@ -26,15 +26,15 @@ app.use(express.static("chat", {
 }));
 
 const announcements = [
-	"Butzbach Chat has moved to \'scot.butzbach.net\'! You can still chat at the host site \'butzbach-chat.sbutzbach07.repl.co\' because it will always be available. For more information, please visit the project page at Scot\'s website.",
 	"Visit Scot\'s website at \'https://scot.butzbach.net\'.",
 	"If you want to see the developmental version of Butzbach Chat, go to \'https://butzbach-chat-development.sbutzbach07.repl.co\'. There is no implementation of the developmental version on Scot\'s website.",
 	"If you want to revisit the time of playing Flash games, head to Scot\'s website and go to the Games page. Yes, with help from some projects, Flash games can be playable again.",
-	"Ever wondered people play sounds in this app? Every sound has a nine letter phrase. When sent, it plays a sound to everyone, along with an announcement of who played what. The list of phrases can be found by using the /listsounds command, the looking at the app's project page on Scot's website, or looking at the code for the project on Replit.",
+	"Ever wondered how people play sounds in this app? Every sound has a nine-letter phrase. When sent, a sound plays to everyone, along with an announcement of who played what. The list of phrases can be found by using the /listsounds command or visiting the GitHub repository.",
 	"Butzbach Chat features a command system. Use \"/help\" or \"/h\" to display all commands available to use.",
-	"Butzbach Chat is licensed under the MIT License. Visit the project page on Replit for terms.",
+	"Butzbach Chat is licensed under the MIT License. Visit the repository on GitHub for terms.",
 	"Butzbach Chat supports room creation. Create your own rooms to chat with your friends. A room code is automatically generated when a room is created.",
-	"Butzbach Chat features a chat filter system using the \"censorjs\" package from NPM. Unfiltered chat rooms end with \"_nofilter\" Be responsible, be respectful, and stay safe online."
+	"Butzbach Chat features a chat filter system using the \"censorjs\" package from NPM. Unfiltered chat rooms end with \"_nofilter\" Be responsible, be respectful, and stay safe online.",
+	"Butzbach Chat has moved from Replit hosting to Render hosting due to Replit hosting changes. Visit the GitHub repository for more information."
 ];
 
 const sounds = [
@@ -213,11 +213,11 @@ io.on("connection", (socket) => {
 								break;
 							case "ps":
 							case "/ps":
-								socket.emit("receive", "message", "Usage: /ps [sound_phrase]. Alias of /playsound. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found on the project page on Scot\'s website, or by using /listsounds.");
+								socket.emit("receive", "message", "Usage: /ps [sound_phrase]. Alias of /playsound. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
 								break;
 							case "playsound":
 							case "/playsound":
-								socket.emit("receive", "message", "Usage: /playsound [sound_phrase]. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found on the project page on Scot\'s website, or by using /listsounds.");
+								socket.emit("receive", "message", "Usage: /playsound [sound_phrase]. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
 								break;
 							case "pm":
 							case "/pm":
@@ -229,11 +229,11 @@ io.on("connection", (socket) => {
 								break;
 							case "prs":
 							case "/prs":
-								socket.emit("receive", "message", "Usage: /prs [recipient] [sound_phrase]. Alias of /privatesound. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found on the project page on Scot\'s website, or by using /listsounds.");
+								socket.emit("receive", "message", "Usage: /prs [recipient] [sound_phrase]. Alias of /privatesound. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
 								break;
 							case "privatesound":
 							case "/privatesound":
-								socket.emit("receive", "message", "Usage: /privatesound [recipient] [sound_phrase]. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found on the project page on Scot\'s website, or by using /listsounds.");
+								socket.emit("receive", "message", "Usage: /privatesound [recipient] [sound_phrase]. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
 								break;
 							default:
 								socket.emit("receive", "error", `Error: ${messageArray[1]} is not a command.`);
