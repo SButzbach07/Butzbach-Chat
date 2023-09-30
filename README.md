@@ -86,7 +86,7 @@ Butzbach Chat has always been on Replit since January 2022. I created it in 9th 
 
 On September 28, 2023, a notice was published on Replit concerning hosting changes. Their _Deployment_ feature will be the only way to host things on Replit as they are deprecating their _Always On_ hosting feature, which will be removed on January 1, 2024. Deployments are available on Pro and Hacker plans, along with monthly Cycle billing, meaning access to my chat app on Replit will no longer be available since I have a Free plan.
 
-I decided to host the chat app on [Render](https://render.com) for free, with a similar hosting environment as Replit. Butzbach Chat on my website will utilize Render instead of Replit as I removed the production version of Butzbach Chat on Replit.
+I decided to host the chat app on [Render](https://render.com) for free, with a similar hosting environment as Replit. Butzbach Chat on my website will utilize Render instead of Replit as I removed the production version of Butzbach Chat from Replit since something screwed up the app execution involving packages.
 
 ## Deno Implementation
 I started looking at [Deno](https://deno.com) as an alternative to Node.js for Butzbach Chat. However, there is an issue with Socket.IO when it comes to Deno as there is no client implementation for TypeScript yet. When the client implementation is released, I will consider moving Butzbach Chat to Deno as I can use Deno Deploy to host it. More information will be posted here when client implementation is released.
