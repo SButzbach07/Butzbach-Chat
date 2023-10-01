@@ -298,7 +298,12 @@ io.on("connection", (socket) => {
 					if (messageArray.length == 2) {
 						for (let sound of sounds) {
 							if (messageArray[1] == sound) {
-								io.in(users[socket.id].room).emit("receive", "nonotification", `Server: ${users[socket.id].name} played "${sound}".`);
+								if (messageArray[1] == "rickrolll") {
+									io.in(users[socket.id].room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you all.`);
+								} else {
+									io.in(users[socket.id].room).emit("receive", "nonotification", `Server: ${users[socket.id].name} played "${sound}".`);
+								}
+								
 								await wait(500);
 								io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 								return;
