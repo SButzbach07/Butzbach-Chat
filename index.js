@@ -38,37 +38,55 @@ const announcements = [
 ];
 
 const sounds = [
-	"evictroom",
-	"olderinet",
-	"stickykey",
-	"amogusrep",
-	"vsaucehey",
-	"mccaveamb",
-	"goooofyah",
-	"sheeeeesh",
 	"amogusjob",
-	"stoooopid",
-	"emodamage",
-	"bobeatbox",
-	"ballerbmm",
-	"boomvines",
-	"hehehehaa",
-	"dasideeye",
 	"amogusmix",
-	"skibisong",
+	"amogusrep",
+	"ballerbmm",
+	"beeperror",
+	"boatsawed",
+	"bobeatbox",
+	"bonkdoooh",
 	"branpizza",
 	"brokentab",
-	"metalpipe",
-	"cocacolae",
-	"beeperror",
-	"yellgoofy",
-	"ohhnoobro",
-	"zzzzsnore",
-	"auuuuuugh",
-	"xpearrape",
 	"cicecream",
+	"cocacolae",
+	"continued",
+	"damagelot",
+	"dasideeye",
+	"deadmario",
+	"depotheme",
+	"discorddm",
+	"discordin",
+	"distractd",
+	"emodamage",
+	"evictroom",
+	"fnbattleb",
+	"fnbattlep",
 	"goodnight",
-	"rickrolll"
+	"hehehehaa",
+	"iamdaaone",
+	"jesussend",
+	"krabswalk",
+	"mccaveamb",
+	"metalpipe",
+	"olderinet",
+	"rickrolll",
+	"rightback",
+	"russmckid",
+	"sanstheme",
+	"sheeeeesh",
+	"skibisong",
+	"stoooopid",
+	"thxmtheme",
+	"vsaucehey",
+	"xpcritbat",
+	"xpcriterr",
+	"xpearrape",
+	"xperrsong",
+	"xpspamerr",
+	"yellgoofy",
+	"yogotmail",
+	"zzzzsnore"
 ];
 
 const users = {};
@@ -76,6 +94,15 @@ const rooms = {};
 
 async function wait(time) {
 	await new Promise(resolve => setTimeout(resolve, time));
+}
+
+function shuffle(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+
+	return array;
 }
 
 function generateRoomCode() {
@@ -245,7 +272,7 @@ io.on("connection", (socket) => {
 				case "/ls":
 				case "/listsounds":
 					if (messageArray.length == 1) {
-						socket.emit("receive", "message", `Available sound phrases: ${sounds.slice(0).sort().join(", ")}`);
+						socket.emit("receive", "message", `Available sound phrases: ${sounds.join(", ")}`);
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
 					}
@@ -255,13 +282,11 @@ io.on("connection", (socket) => {
 					if (messageArray.length == 1) {
 						io.in(users[socket.id].room).emit("receive", "nonotification", `Server: OH NO! ${users[socket.id].name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
 						await wait(500);
-						for (let sound of sounds) {
-							if (sound == "rickrolll") {
-								continue;
-							} else {
-								io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
-								await wait(Math.floor(Math.random() * 750) + 750);
-							}
+						let shuffledSounds = shuffle(sounds.slice());
+						shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
+						for (let sound of shuffledSounds) {
+							io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+							await wait(Math.floor(Math.random() * 750) + 750);
 						}
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
