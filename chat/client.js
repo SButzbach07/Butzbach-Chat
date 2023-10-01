@@ -27,10 +27,14 @@ let isConnected = false;
 let announcementInterval;
 
 function send() {
-	const messageInput = document.getElementById("message");
-	if (messageInput.value.length != 0) {
-		socket.emit("send", messageInput.value);
-		messageInput.value = "";
+	if (isConnected) {
+		const messageInput = document.getElementById("message");
+		if (messageInput.value.length != 0) {
+			socket.emit("send", messageInput.value);
+			messageInput.value = "";
+		}
+	} else {
+		receive("Error: You are not connected to a chat room.", 349);
 	}
 }
 
