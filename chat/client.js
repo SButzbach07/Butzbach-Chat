@@ -31,11 +31,11 @@ function send() {
 	if (messageInput.value.length != 0) {
 		if (isConnected) {
 			socket.emit("send", messageInput.value);
+		} else {
+			receive("Error: You are not connected to a chat room.", 349);
 		}
 		
 		messageInput.value = "";
-	} else {
-		receive("Error: You are not connected to a chat room.", 349);
 	}
 }
 
