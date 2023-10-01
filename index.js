@@ -41,6 +41,7 @@ const sounds = [
 	"amogusjob",
 	"amogusmix",
 	"amogusrep",
+	"auuuuuugh",
 	"ballerbmm",
 	"beeperror",
 	"boatsawed",
