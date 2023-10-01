@@ -77,6 +77,7 @@ const sounds = [
 	"sanstheme",
 	"sheeeeesh",
 	"skibisong",
+	"stickykey",
 	"stoooopid",
 	"thxmtheme",
 	"vsaucehey",
