@@ -95,7 +95,7 @@ const users = {};
 const rooms = {};
 
 async function wait(time) {
-	await new Promise(resolve => setTimeout(resolve, time));
+	return new Promise(resolve => setTimeout(resolve, time));
 }
 
 function shuffle(array) {
