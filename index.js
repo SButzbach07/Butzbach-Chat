@@ -353,8 +353,14 @@ io.on("connection", (socket) => {
 								} else {
 									for (let sound of sounds) {
 										if (messageArray[2] == sound) {
-											io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
-											socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
+											if (messageArray[2] == "rickrolll") {
+												io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because `{users[socket.id].name}` just rickrolled you privately.`);
+												socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
+											} else {
+												io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
+												socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
+											}
+												
 											await wait(500);
 											io.in(id).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 											socket.emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
