@@ -354,7 +354,7 @@ io.on("connection", (socket) => {
 									for (let sound of sounds) {
 										if (messageArray[2] == sound) {
 											if (messageArray[2] == "rickrolll") {
-												io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because `{users[socket.id].name}` just rickrolled you privately.`);
+												io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you privately.`);
 												socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
 											} else {
 												io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
