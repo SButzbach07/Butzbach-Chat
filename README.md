@@ -1,9 +1,11 @@
 # Butzbach Chat
-__License: MIT__
+
+License: MIT
 
 A web communication application using Socket.IO.
 
 ## Overview
+
 This is a solo web project that runs on Node.js and uses three modules:
 
 * HTTP (Built-in)
@@ -27,7 +29,9 @@ The developmental version of the app can be found below on Replit, along with th
 Give Render a minute to wake up the chat app before using it. You'll know when it's ready when you see the welcome message.
 
 ## Features
+
 This project has many features available to everyone.
+
 * Command System: Use `/help` to list all available commands, or use `/help [command_name]` to see the command format, what the command does, and the number of arguments it takes. These commands are argument-sensitive.
 * Chat Room Menu: Click the Chatroom button at the top of your screen to enter a user name and room code to join a room, or a room name to create a room. You can also use it to leave a room.
 * Room Creation: Rooms have a unique room name and room code. A random code is generated when a room is created. The chat filter will be enabled or disabled depending on the room name.
@@ -49,20 +53,27 @@ These features are being worked on, but are not available yet on the app. Visit 
 __There are no upcoming features.__
 
 ## Sound Phrases
+
 This list contains every phrase that plays sounds instead of sending messages. If you noticed they're all nine letter long and has no whitespace anywhere. You can also use the `/listsounds` command to list the sounds while in the chat app.
 
 __Note:__ I do not own any of these sounds. They belong to their creators. I use them intentionally for others to entertain themselves while using this app.
 
+* aaaaaaaaa
+* ahogrider
+* alrtsiren
 * amogusjob
 * amogusmix
 * amogusrep
+* auuuuuugh
 * ballerbmm
+* beeeeeeep
 * beeperror
 * boatsawed
 * bobeatbox
 * bonkdoooh
 * branpizza
 * brokentab
+* chorusaah
 * cicecream
 * cocacolae
 * continued
@@ -72,29 +83,44 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * depotheme
 * discorddm
 * discordin
+* discordrc
 * distractd
 * emodamage
 * evictroom
+* fartsound
 * fnbattleb
 * fnbattlep
+* garbageee
+* gcosndwch
+* gdrviolin
+* goatscrem
 * goodnight
+* goofyslip
+* gooofhorn
 * hehehehaa
 * iamdaaone
 * jesussend
 * krabswalk
+* maaaaaaaa
 * mccaveamb
 * metalpipe
 * olderinet
+* oooooooof
+* pstwostrt
 * rickrolll
 * rightback
+* rockbooom
 * russmckid
 * sanstheme
 * sheeeeesh
 * skibisong
 * stickykey
 * stoooopid
+* tacobelll
 * thxmtheme
+* vadernooo
 * vsaucehey
+* wompwwomp
 * xpcritbat
 * xpcriterr
 * xpearrape
@@ -105,6 +131,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * zzzzsnore
 
 ## Changes to app hosting
+
 Butzbach Chat has always been on Replit since January 2022. I created it in 9th grade when I was sick with COVID-19. I know, it's sad. What else was I supposed to in a room by myself aside from school work and making my chat app based on a Socket.IO chat template I found on Replit?
 
 On September 28, 2023, a notice was published on Replit concerning hosting changes. Their _Deployment_ feature will be the only way to host things on Replit as they are deprecating their _Always On_ hosting feature, which will be removed on January 1, 2024. Deployments are available on Pro and Hacker plans, along with monthly Cycle billing, meaning access to my chat app on Replit will no longer be available since I have a Free plan.
@@ -112,4 +139,5 @@ On September 28, 2023, a notice was published on Replit concerning hosting chang
 I decided to host the chat app on [Render](https://render.com) for free, with a similar hosting environment as Replit. Butzbach Chat on my website will utilize Render instead of Replit as I removed the production version of Butzbach Chat from Replit since something screwed up the app execution involving packages.
 
 ## Deno Implementation
+
 I started looking at [Deno](https://deno.com) as an alternative to Node.js for Butzbach Chat. However, there is an issue with Socket.IO when it comes to Deno as there is no client implementation for TypeScript yet. When the client implementation is released, I will consider moving Butzbach Chat to Deno as I can use Deno Deploy to host it. More information will be posted here when client implementation is released.
