@@ -214,7 +214,7 @@ io.on("connection", (socket) => {
 				room: code
 			};
 
-			rooms[code].userCount += 1;
+			rooms[code].userCount++;
 			socket.join(code);
 			socket.emit("receive", "message", `Server: Welcome to the \"${rooms[code].name}\" chat room, ${name}.`);
 			socket.in(code).emit("receive", "message", `Server: Welcome, ${name}.`);
@@ -283,6 +283,14 @@ io.on("connection", (socket) => {
 							case "privatesound":
 							case "/privatesound":
 								socket.emit("receive", "message", "Usage: /privatesound [recipient] [sound_phrase]. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
+								break;
+							case "r":
+							case "/r":
+								socket.emit("receive", "message", "Usage: /r [repeat_count] [interval] [command] [command_args]. Alias of /repeat. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds mean no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
+								break;
+							case "repeat":
+							case "/repeat":
+								socket.emit("receive", "message", "Usage: /repeat [repeat_count] [interval] [command] [command_args]. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds means no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
 								break;
 							default:
 								socket.emit("receive", "error", `Error: ${messageArray[1]} is not a command.`);
@@ -400,6 +408,32 @@ io.on("connection", (socket) => {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 2 arguments. You gave ${messageArray.length - 1}.`);
 					}
 					break;
+				case "/r":
+				case "/repeat":
+					if (messageArray.length >= 4) {
+						if (parseInt(messageArray[1]) == NaN) {
+							socket.emit("receive", "error", `Error: The first argument is not a number.`);
+						} else if (parseInt(messageArray[2]) == NaN) {
+							socket.emit("receive", "error", `Error: The second argument is not a number.`);
+						} else {
+							if (messageArray.length > 4) {
+								const commandArgs = messageArray.slice(4).join(" ");
+
+								for (let i = 0; i < parseInt(messageArray[1]); i++) {
+									socket.emit("repeat", messageArray[3], commandArgs);
+									await wait(parseInt(messageArray[2]) * 1000);
+								}
+							} else {
+								for (let i = 0; i < parseInt(messageArray[1]); i++) {
+									socket.emit("repeat", messageArray[3]);
+									await wait(parseInt(messageArray[2]) * 1000);
+								}
+							}
+						}
+					} else {
+						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 4 arguments. You gave ${messageArray.length - 1}.`);
+					}
+					break;
 				default:
 					socket.emit("receive", "error", `Error: ${messageArray[0]} is not a command.`);
 			}
@@ -422,7 +456,7 @@ io.on("connection", (socket) => {
 		if (code != null) {
 			io.in(code).emit("receive", "message", `Server: Goodbye, ${users[socket.id].name}.`);
 			socket.leave(code);
-			rooms[code].userCount -= 1;
+			rooms[code].userCount--;
 			if (rooms[code].userCount == 0) {
 				delete rooms[code];
 				delete users[socket.id];
@@ -438,7 +472,7 @@ io.on("connection", (socket) => {
 		if (code != null) {
 			io.in(code).emit("receive", "message", `Server: Goodbye, ${users[socket.id].name}.`);
 			socket.leave(code);
-			rooms[code].userCount -= 1;
+			rooms[code].userCount--;
 			if (rooms[code].userCount == 0) {
 				delete rooms[code];
 				delete users[socket.id];
