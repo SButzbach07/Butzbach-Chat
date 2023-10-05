@@ -211,6 +211,14 @@ socket.on("receive", (type, message) => {
 	}
 });
 
+socket.on("repeat", (command, commandArgs) => {
+	if (commandArgs == undefined) {
+		socket.emit("send", command);
+	} else {
+		socket.emit("send", `${command} ${commandArgs}`);
+	}
+});
+
 socket.on("roomUpdate", (userCount, userList) => {
 	clearUserList();
 	userCounter.textContent = userCount;
