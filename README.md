@@ -45,7 +45,7 @@ This project has many features available to everyone.
 * Chat Filter: Any profane words found in a message will be censored and replaced with asterisks. There will be an option in the Settings menu to disable this, but I HIGHLY SUGGEST you keep the filter on. The chat filter uses the _censorjs_ NPM package.
 * Default Chat Room: This chat room will stay available for everyone who do not want to make their own chat rooms and deal with other ways to send codes around. A placeholder user will stay in this room to prevent it from getting deleted if everyone leaves the room. You are unable to interact with the user, and the user will "tell" you the same thing. Room code is "butzbach".
 
-Some computers don't have a number pad, which includes an Enter key.
+Some computers don't have a number pad, which includes an Enter key, hence the asterisks around "both" in the Message Requirement feature.
 
 ## Upcoming
 
