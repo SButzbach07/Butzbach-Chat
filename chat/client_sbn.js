@@ -262,7 +262,7 @@ document.addEventListener("keypress", (event) => {
 });
 
 window.onload = () => {
-	receive("Welcome to Butzbach Chat. If you see this message, then there is a connection established with the server. To join a chat room, press the Chat Room button at the top of your screen. Create a chat room by providing a user name and a room name, or join a chat room by providing a user name and a room code. The side bar will provide information about the connected chat room.", 440);
+	receive("Welcome to Butzbach Chat. If you see this message, then there is a connection established with the server. To join a chat room, press the Chat Room button at the top of your screen. Create a chat room by providing a user name and a room name, or join a chat room by providing a user name and a room code. The side bar will provide information about the connected chat room. Use room code \"butzbach\" for the default chat room.", 440);
 	document.title = "Not Connected - Chat - scot.butzbach.net";
 }
 
