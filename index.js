@@ -322,6 +322,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				case "/pas":
 				case "/playallsounds":
@@ -337,6 +338,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				case "/ps":
 				case "/playsound":
@@ -359,6 +361,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 1 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				case "/pm":
 				case "/privatemessage":
@@ -386,6 +389,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes at least 2 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				case "/prs":
 				case "/privatesound":
@@ -423,6 +427,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 2 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				case "/r":
 				case "/repeat":
@@ -449,6 +454,7 @@ io.on("connection", (socket) => {
 					} else {
 						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 4 arguments. You gave ${messageArray.length - 1}.`);
 					}
+					
 					break;
 				default:
 					socket.emit("receive", "error", `Error: ${messageArray[0]} is not a command.`);
