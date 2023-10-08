@@ -33,7 +33,7 @@ const announcements = [
 	"Butzbach Chat features a command system. Use \"/help\" or \"/h\" to display all commands available to use.",
 	"Butzbach Chat is licensed under the MIT License. Visit the repository on GitHub for terms.",
 	"Butzbach Chat supports room creation. Create your own rooms to chat with your friends. A room code is automatically generated when a room is created.",
-	"Butzbach Chat features a chat filter system using the \"censorjs\" package from NPM. Unfiltered chat rooms end with \"_nofilter\" Be responsible, be respectful, and stay safe online.",
+	"Butzbach Chat features a chat filter system using the \"censorjs\" package from NPM. Unfiltered chat rooms end with \"_nofilter\". Be responsible, be respectful, and stay safe online.",
 	"Butzbach Chat has moved from Replit hosting to Render hosting due to Replit hosting changes. Visit the GitHub repository for more information."
 ];
 
