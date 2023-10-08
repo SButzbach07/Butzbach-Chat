@@ -233,7 +233,7 @@ io.on("connection", (socket) => {
 				case "/h":
 				case "/help":
 					if (messageArray.length == 1) {
-						socket.emit("receive", "message", "Available commands: /h, /help, /ls, /listsounds, /pas, /playallsounds, /ps, /playsound, /pm, /privatemessage, /prs, /privatesound.");
+						socket.emit("receive", "message", "Available commands: /h, /help, /ls, /listsounds, /pas, /playallsounds, /ps, /playsound, /pm, /privatemessage, /prs, /privatesound, /r, /repeat.");
 					} else if (messageArray.length == 2) {
 						switch (messageArray[1]) {
 							case "h":
