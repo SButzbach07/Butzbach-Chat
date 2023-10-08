@@ -43,6 +43,7 @@ This project has many features available to everyone.
 * Built-in Sound Board: The chat app has various sounds from memes that can be played. More information can be found in the Sound Phrases section of this page.
 * Audio Disabler: If you find someone who spams sounds annoying, use the Disable Audio checkbox in the Settings menu to prevent any sounds from being played. However, this does not stop any sounds currently playing. Alternatively, you can mute the tab and prevent any sounds, currently playing or not, to not being played at all. However, you will need to enable it if you want to hear any sound, even the notification beeps.
 * Chat Filter: Any profane words found in a message will be censored and replaced with asterisks. There will be an option in the Settings menu to disable this, but I HIGHLY SUGGEST you keep the filter on. The chat filter uses the _censorjs_ NPM package.
+* Default Chat Room: This chat room will stay available for everyone who do not want to make their own chat rooms and deal with other ways to send codes around. A placeholder user will stay in this room to prevent it from getting deleted if everyone leaves the room. You are unable to interact with the user, and the user will "tell" you the same thing. Room code is "butzbach".
 
 Some computers don't have a number pad, which includes an Enter key.
 
@@ -50,7 +51,19 @@ Some computers don't have a number pad, which includes an Enter key.
 
 These features are being worked on, but are not available yet on the app. Visit the developmental version of Butzbach Chat using the link above to see upcoming feature implementations.
 
-__There are no upcoming features.__
+* Invite Links: A new command will display a room invite link so others can join the room by clicking the link. The room code must be valid, or the link will not work.
+
+## Commands
+
+This list contains every command on the chat. Each commands has its syntax, what it does, and what parameters it has.
+
+* `/help [command_name]`: Displays all available commands or the usage of a single command. `command_name` is the name of the command, and the parameter is optional. `/h` is an alias of this command.
+* `/listsounds`: Lists every sound phrase available in the chat app. There are no parameters for this command. `/ls` is an alias of this command.
+* `/playallsounds`: Plays every sound in the chat app, except for _rickroll_ as it is too long to play. There are no parameters for this command. `/pas` is an alias of this command.
+* `/playsounds [sound_phrase]`: Plays a sounds to everyone in the chat room. `sound_phrase` is the name of the sound phrase. The full list of phrases can be found in the list below or by using `/listsounds`. `/ps` is an alias of this command.
+* `/privatemessage [recipient] [message]`: Sends a message to a specific user in the chat room. `recipient`: is the name of the user in the chat room. `message` is the message sent to the recipient. `/pm` is an alias of this command.
+* `/privatesound [recipient] [sound_phrase]`: Plays a sound to a specific user in the chat room. `recipient` is the name of the user in the chat room. `sound_phrase` is the name of the sound phrase. The full list of phrases can be found in the list below or by using `/listsounds`. `/prs` is an alias of this command.
+* `/repeat [repeat_count] [interval] [command] [command_args]`: Repeats a command a specific number of times at a specific interval. `repeat_count` is the number of times to repeat the command. `interval` is the amount of time in seconds to delay each repetition for. 0 seconds means no delay. `command` is the command to repeat. `command_args` are the arguments for the repeated command, and this parameter is optional. `/r` is an alias of this command.
 
 ## Sound Phrases
 
