@@ -233,7 +233,12 @@ io.on("connection", (socket) => {
 			socket.emit("join", name, rooms[code].name, code, (rooms[code].chatFilter) ? "Enabled" : "Disabled");
 			io.in(code).emit("roomUpdate", rooms[code].userCount, getUsersFromRoom(code));
 			if (code == "butzbach") {
-				await wait(Math.floor(Math.random() * 750) + 750);
+				try {
+					await wait(Math.floor(Math.random() * 750) + 750);
+				} catch (error) {
+					return;
+				}
+				
 				socket.emit("receive", "message", "Placeholder_User: Hello, I'm a user programmed by Scot himself to keep this default chat room from getting deleted if everyone leaves. I can not interact with others, meaning I'm an NPC. :/ Anyways, this chat room is for anyone who doesn't want to create their own and worry about finding other ways to send chat room codes. You can have the same website open in two different tabs and be in two different chatrooms at the same time, including this one if you wanted to. Maybe three or more, I don't know. ...really, I don't actually know. The chat filter is enabled for this room. Nothing I can do about it. Scot doesn\'t like profanity. Need help using the command system? Just use \"/help\" to list your commands, then use \"/help [command_name]\" for command semantics. Glad to see you...ish. Butzbach, program me to use AI. No? Okay fine, I guess I'll just stay as a placeholder. I can't leave either way. ...you don't know how to program me to use AI? Come on, man! You created this app, shouldn't you know this stuff? Ugh, I can't stand this guy. Whatever. Enjoy chatting with others, I guess. :/");
 			}
 		}
@@ -326,40 +331,48 @@ io.on("connection", (socket) => {
 					break;
 				case "/pas":
 				case "/playallsounds":
-					if (messageArray.length == 1) {
-						io.in(users[socket.id].room).emit("receive", "nonotification", `Server: OH NO! ${users[socket.id].name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
-						await wait(500);
-						let shuffledSounds = shuffle(sounds.slice());
-						shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
-						for (let sound of shuffledSounds) {
-							io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
-							await wait(Math.floor(Math.random() * 750) + 750);
+					try {
+						if (messageArray.length == 1) {
+							io.in(users[socket.id].room).emit("receive", "nonotification", `Server: OH NO! ${users[socket.id].name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
+							await wait(500);
+							let shuffledSounds = shuffle(sounds.slice());
+							shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
+							for (let sound of shuffledSounds) {
+								io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+								await wait(Math.floor(Math.random() * 750) + 750);
+							}
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
+					} catch (error) {
+						return;
 					}
 					
 					break;
 				case "/ps":
 				case "/playsound":
-					if (messageArray.length == 2) {
-						for (let sound of sounds) {
-							if (messageArray[1] == sound) {
-								if (messageArray[1] == "rickrolll") {
-									io.in(users[socket.id].room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you all.`);
-								} else {
-									io.in(users[socket.id].room).emit("receive", "nonotification", `Server: ${users[socket.id].name} played "${sound}".`);
+					try {
+						if (messageArray.length == 2) {
+							for (let sound of sounds) {
+								if (messageArray[1] == sound) {
+									if (messageArray[1] == "rickrolll") {
+										io.in(users[socket.id].room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you all.`);
+									} else {
+										io.in(users[socket.id].room).emit("receive", "nonotification", `Server: ${users[socket.id].name} played "${sound}".`);
+									}
+									
+									await wait(500);
+									io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+									return;
 								}
-								
-								await wait(500);
-								io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
-								return;
 							}
+	
+							socket.emit("receive", "error", `Error: ${messageArray[1]} is not a sound phrase.`);
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 1 arguments. You gave ${messageArray.length - 1}.`);
 						}
-
-						socket.emit("receive", "error", `Error: ${messageArray[1]} is not a sound phrase.`);
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 1 arguments. You gave ${messageArray.length - 1}.`);
+					} catch (error) {
+						return;
 					}
 					
 					break;
@@ -393,66 +406,74 @@ io.on("connection", (socket) => {
 					break;
 				case "/prs":
 				case "/privatesound":
-					if (messageArray.length == 3) {
-						for (let id of Object.keys(users)) {
-							if (messageArray[1] == users[id].name && users[id].room == users[socket.id].room) {
-								if (messageArray[1] == users[socket.id].name) {
-									socket.emit("receive", "error", "Error: You can not play yourself a private sound.");
-								} else {
-									for (let sound of sounds) {
-										if (messageArray[2] == sound) {
-											if (messageArray[2] == "rickrolll") {
-												io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you privately.`);
-												socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
-											} else {
-												io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
-												socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
+					try {
+						if (messageArray.length == 3) {
+							for (let id of Object.keys(users)) {
+								if (messageArray[1] == users[id].name && users[id].room == users[socket.id].room) {
+									if (messageArray[1] == users[socket.id].name) {
+										socket.emit("receive", "error", "Error: You can not play yourself a private sound.");
+									} else {
+										for (let sound of sounds) {
+											if (messageArray[2] == sound) {
+												if (messageArray[2] == "rickrolll") {
+													io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you privately.`);
+													socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
+												} else {
+													io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
+													socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
+												}
+													
+												await wait(500);
+												io.in(id).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+												socket.emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+												return;
 											}
-												
-											await wait(500);
-											io.in(id).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
-											socket.emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
-											return;
 										}
+		
+										socket.emit("receive", "error", `Error: ${messageArray[2]} is not a sound phrase.`);
 									}
-	
-									socket.emit("receive", "error", `Error: ${messageArray[2]} is not a sound phrase.`);
+									
+									return;
 								}
-								
-								return;
 							}
+	
+							socket.emit("receive", "error", `Error: ${messageArray[1]} is not in the chat room.`);
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 2 arguments. You gave ${messageArray.length - 1}.`);
 						}
-
-						socket.emit("receive", "error", `Error: ${messageArray[1]} is not in the chat room.`);
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 2 arguments. You gave ${messageArray.length - 1}.`);
+					} catch (error) {
+						return;
 					}
 					
 					break;
 				case "/r":
 				case "/repeat":
-					if (messageArray.length >= 4) {
-						if (parseInt(messageArray[1]) == NaN) {
-							socket.emit("receive", "error", `Error: The first argument is not a number.`);
-						} else if (parseInt(messageArray[2]) == NaN) {
-							socket.emit("receive", "error", `Error: The second argument is not a number.`);
-						} else {
-							if (messageArray.length > 4) {
-								const commandArgs = messageArray.slice(4).join(" ");
-
-								for (let i = 0; i < parseInt(messageArray[1]); i++) {
-									socket.emit("repeat", messageArray[3], commandArgs);
-									await wait(parseInt(messageArray[2]) * 1000);
-								}
+					try {
+						if (messageArray.length >= 4) {
+							if (parseInt(messageArray[1]) == NaN) {
+								socket.emit("receive", "error", `Error: The first argument is not a number.`);
+							} else if (parseInt(messageArray[2]) == NaN) {
+								socket.emit("receive", "error", `Error: The second argument is not a number.`);
 							} else {
-								for (let i = 0; i < parseInt(messageArray[1]); i++) {
-									socket.emit("repeat", messageArray[3]);
-									await wait(parseInt(messageArray[2]) * 1000);
+								if (messageArray.length > 4) {
+									const commandArgs = messageArray.slice(4).join(" ");
+	
+									for (let i = 0; i < parseInt(messageArray[1]); i++) {
+										socket.emit("repeat", messageArray[3], commandArgs);
+										await wait(parseInt(messageArray[2]) * 1000);
+									}
+								} else {
+									for (let i = 0; i < parseInt(messageArray[1]); i++) {
+										socket.emit("repeat", messageArray[3]);
+										await wait(parseInt(messageArray[2]) * 1000);
+									}
 								}
 							}
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 4 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 4 arguments. You gave ${messageArray.length - 1}.`);
+					} catch (error) {
+						return;
 					}
 					
 					break;
