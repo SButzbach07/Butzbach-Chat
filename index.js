@@ -127,7 +127,7 @@ users["placeholder"] = {
 };
 
 async function wait(time) {
-	return new Promise(resolve => setTimeout(resolve, time));
+	return new Promise((resolve, reject) => setTimeout(resolve, time));
 }
 
 function shuffle(array) {
