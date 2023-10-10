@@ -44,6 +44,7 @@ This project has many features available to everyone.
 * Audio Disabler: If you find someone who spams sounds annoying, use the Disable Audio checkbox in the Settings menu to prevent any sounds from being played. However, this does not stop any sounds currently playing. Alternatively, you can mute the tab and prevent any sounds, currently playing or not, to not being played at all. However, you will need to enable it if you want to hear any sound, even the notification beeps.
 * Chat Filter: Any profane words found in a message will be censored and replaced with asterisks. There will be an option in the Settings menu to disable this, but I HIGHLY SUGGEST you keep the filter on. The chat filter uses the _censorjs_ NPM package.
 * Default Chat Room: This chat room will stay available for everyone who do not want to make their own chat rooms and deal with other ways to send codes around. A placeholder user will stay in this room to prevent it from getting deleted if everyone leaves the room. You are unable to interact with the user, and the user will "tell" you the same thing. Room code is "butzbach".
+* Invite Links: Use /invitelink to display a room invite link so others can join the room by clicking the link. The room must exist and the room code must be valid, or the link will not work.
 
 Some computers don't have a number pad, which includes an Enter key, hence the asterisks around "both" in the Message Requirement feature.
 
@@ -51,7 +52,7 @@ Some computers don't have a number pad, which includes an Enter key, hence the a
 
 These features are being worked on, but are not available yet on the app. Visit the developmental version of Butzbach Chat using the link above to see upcoming feature implementations.
 
-* Invite Links: A new command will display a room invite link so others can join the room by clicking the link. The room code must be valid, or the link will not work.
+__There are no upcoming features.__
 
 ## Commands
 
