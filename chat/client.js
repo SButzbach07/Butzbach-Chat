@@ -211,6 +211,10 @@ socket.on("receive", (type, message) => {
 	}
 });
 
+socket.on("checkURL", (callback) => {
+	callback(window.location.hostname);
+});
+
 socket.on("repeat", (command, commandArgs) => {
 	if (commandArgs == undefined) {
 		socket.emit("send", command);

@@ -126,8 +126,8 @@ users["placeholder"] = {
 	room: "butzbach"
 };
 
-async function wait(time) {
-	return new Promise((resolve, reject) => setTimeout(resolve, time));
+function wait(time) {
+	return new Promise(resolve => setTimeout(resolve, time));
 }
 
 function shuffle(array) {
@@ -233,196 +233,204 @@ io.on("connection", (socket) => {
 			socket.emit("join", name, rooms[code].name, code, (rooms[code].chatFilter) ? "Enabled" : "Disabled");
 			io.in(code).emit("roomUpdate", rooms[code].userCount, getUsersFromRoom(code));
 			if (code == "butzbach") {
-				try {
-					await wait(Math.floor(Math.random() * 750) + 750);
-				} catch (error) {
-					return;
-				}
-				
+				await wait(Math.floor(Math.random() * 750) + 750);
 				socket.emit("receive", "message", "Placeholder_User: Hello, I'm a user programmed by Scot himself to keep this default chat room from getting deleted if everyone leaves. I can not interact with others, meaning I'm an NPC. :/ Anyways, this chat room is for anyone who doesn't want to create their own and worry about finding other ways to send chat room codes. You can have the same website open in two different tabs and be in two different chatrooms at the same time, including this one if you wanted to. Maybe three or more, I don't know. ...really, I don't actually know. The chat filter is enabled for this room. Nothing I can do about it. Scot doesn\'t like profanity. Need help using the command system? Just use \"/help\" to list your commands, then use \"/help [command_name]\" for command semantics. Glad to see you...ish. Butzbach, program me to use AI. No? Okay fine, I guess I'll just stay as a placeholder. I can't leave either way. ...you don't know how to program me to use AI? Come on, man! You created this app, shouldn't you know this stuff? Ugh, I can't stand this guy. Whatever. Enjoy chatting with others, I guess. :/");
 			}
 		}
 	});
 
 	socket.on("send", async (message) => {
+		const user = (users[socket.id] != undefined) ? users[socket.id] : null;
 		let messageArray = [];
 		let privateMessage = "";
 
-		if (/^\/[a-z0-9]+/i.test(message)) {
-			messageArray = message.split(" ");
-			switch (messageArray[0]) {
-				case "/h":
-				case "/help":
-					if (messageArray.length == 1) {
-						socket.emit("receive", "message", "Available commands: /h, /help, /ls, /listsounds, /pas, /playallsounds, /ps, /playsound, /pm, /privatemessage, /prs, /privatesound, /r, /repeat.");
-					} else if (messageArray.length == 2) {
-						switch (messageArray[1]) {
-							case "h":
-							case "/h":
-								socket.emit("receive", "message", "Usage: /h [command_name]. Alias of /help. Displays all available commands or the usage of a single command. \"command_name\" is the name of the command, and the parameter is optional.");
-								break;
-							case "help":
-							case "/help":
-								socket.emit("receive", "message", "Usage: /help [command_name]. Displays all available commands or the usage of a single command. \"command_name\" is the name of the command, and the parameter is optional.");
-								break;
-							case "ls":
-							case "/ls":
-								socket.emit("receive", "message", "Usage: /ls. Alias of /listsounds. Lists every sound phrase available in the chat app. There are no parameters for this command.");
-								break;
-							case "listsounds":
-							case "/listsounds":
-								socket.emit("receive", "message", "Usage: /listsounds. Lists every sound phrase available in the chat app. There are no parameters for this command.");
-								break;
-							case "pas":
-							case "/pas":
-								socket.emit("receive", "message", "Usage: /pas. Alias of /playallsounds. Plays every sound in the chat app, except for \"rickrolll\" as it is too long to play. There are no parameters for this command.");
-								break;
-							case "playallsounds":
-							case "/playallsounds":
-								socket.emit("receive", "message", "Usage: /playallsounds. Plays every sound in the chat app, except for \"rickrolll\" as it is too long to play. There are no parameters for this command.");
-								break;
-							case "ps":
-							case "/ps":
-								socket.emit("receive", "message", "Usage: /ps [sound_phrase]. Alias of /playsound. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
-								break;
-							case "playsound":
-							case "/playsound":
-								socket.emit("receive", "message", "Usage: /playsound [sound_phrase]. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
-								break;
-							case "pm":
-							case "/pm":
-								socket.emit("receive", "message", "usage: /pm [recipient] [message]. Alias of /privatemessage. Sends a message to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"message\" is the message sent to the recipient.");
-								break;
-							case "privatemessage":
-							case "/privatemessage":
-								socket.emit("receive", "message", "Usage: /privatemessage [recipient] [message]. Sends a message to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"message\" is the message sent to the recipient.");
-								break;
-							case "prs":
-							case "/prs":
-								socket.emit("receive", "message", "Usage: /prs [recipient] [sound_phrase]. Alias of /privatesound. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
-								break;
-							case "privatesound":
-							case "/privatesound":
-								socket.emit("receive", "message", "Usage: /privatesound [recipient] [sound_phrase]. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
-								break;
-							case "r":
-							case "/r":
-								socket.emit("receive", "message", "Usage: /r [repeat_count] [interval] [command] [command_args]. Alias of /repeat. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds mean no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
-								break;
-							case "repeat":
-							case "/repeat":
-								socket.emit("receive", "message", "Usage: /repeat [repeat_count] [interval] [command] [command_args]. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds means no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
-								break;
-							default:
-								socket.emit("receive", "error", `Error: ${messageArray[1]} is not a command.`);
-						}
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 or 1 arguments. You gave ${messageArray.length - 1}.`);
-					}
-					break;
-				case "/ls":
-				case "/listsounds":
-					if (messageArray.length == 1) {
-						socket.emit("receive", "message", `Available sound phrases: ${sounds.join(", ")}`);
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
-					}
-					
-					break;
-				case "/pas":
-				case "/playallsounds":
-					try {
+		if (user != null) {
+			if (/^\/[a-z0-9]+/i.test(message)) {
+				messageArray = message.split(" ");
+				switch (messageArray[0]) {
+					case "/h":
+					case "/help":
 						if (messageArray.length == 1) {
-							io.in(users[socket.id].room).emit("receive", "nonotification", `Server: OH NO! ${users[socket.id].name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
+							socket.emit("receive", "message", "Available commands: /h, /help, /ls, /listsounds, /pas, /playallsounds, /ps, /playsound, /pm, /privatemessage, /prs, /privatesound, /r, /repeat.");
+						} else if (messageArray.length == 2) {
+							switch (messageArray[1]) {
+								case "h":
+								case "/h":
+									socket.emit("receive", "message", "Usage: /h [command_name]. Alias of /help. Displays all available commands or the usage of a single command. \"command_name\" is the name of the command, and the parameter is optional.");
+									break;
+								case "help":
+								case "/help":
+									socket.emit("receive", "message", "Usage: /help [command_name]. Displays all available commands or the usage of a single command. \"command_name\" is the name of the command, and the parameter is optional.");
+									break;
+								case "il":
+								case "/il":
+									socket.emit("receive", "message", "Usage: /il. Alias of /invitelink. Displays an invite link for the chat room. There are no parameters for this command.");
+									break;
+								case "invitelink":
+								case "/invitelink":
+									socket.emit("receive", "message", "Usage: /invitelink. Displays an invite link for the chat room. There are no parameters for this command.");
+									break;
+								case "ls":
+								case "/ls":
+									socket.emit("receive", "message", "Usage: /ls. Alias of /listsounds. Lists every sound phrase available in the chat app. There are no parameters for this command.");
+									break;
+								case "listsounds":
+								case "/listsounds":
+									socket.emit("receive", "message", "Usage: /listsounds. Lists every sound phrase available in the chat app. There are no parameters for this command.");
+									break;
+								case "pas":
+								case "/pas":
+									socket.emit("receive", "message", "Usage: /pas. Alias of /playallsounds. Plays every sound in the chat app, except for \"rickrolll\" as it is too long to play. There are no parameters for this command.");
+									break;
+								case "playallsounds":
+								case "/playallsounds":
+									socket.emit("receive", "message", "Usage: /playallsounds. Plays every sound in the chat app, except for \"rickrolll\" as it is too long to play. There are no parameters for this command.");
+									break;
+								case "ps":
+								case "/ps":
+									socket.emit("receive", "message", "Usage: /ps [sound_phrase]. Alias of /playsound. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
+									break;
+								case "playsound":
+								case "/playsound":
+									socket.emit("receive", "message", "Usage: /playsound [sound_phrase]. Plays a sound to everyone in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
+									break;
+								case "pm":
+								case "/pm":
+									socket.emit("receive", "message", "usage: /pm [recipient] [message]. Alias of /privatemessage. Sends a message to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"message\" is the message sent to the recipient.");
+									break;
+								case "privatemessage":
+								case "/privatemessage":
+									socket.emit("receive", "message", "Usage: /privatemessage [recipient] [message]. Sends a message to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"message\" is the message sent to the recipient.");
+									break;
+								case "prs":
+								case "/prs":
+									socket.emit("receive", "message", "Usage: /prs [recipient] [sound_phrase]. Alias of /privatesound. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
+									break;
+								case "privatesound":
+								case "/privatesound":
+									socket.emit("receive", "message", "Usage: /privatesound [recipient] [sound_phrase]. Plays a sound to a specific user in the chat room. \"recipient\" is the name of the user in the chat room. \"sound_phrase\" is the name of the sound phrase. The full list of phrases can be found at the GitHub repository or by using /listsounds.");
+									break;
+								case "r":
+								case "/r":
+									socket.emit("receive", "message", "Usage: /r [repeat_count] [interval] [command] [command_args]. Alias of /repeat. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds mean no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
+									break;
+								case "repeat":
+								case "/repeat":
+									socket.emit("receive", "message", "Usage: /repeat [repeat_count] [interval] [command] [command_args]. Repeats a command a specific number of times at a specific interval. \"repeat_count\" is the number of times to repeat the command. \"interval\" is the amount of time in seconds to delay each repetition for. 0 seconds means no delay. \"command\" is the command to repeat. \"command_args\" are the arguments for the repeated command, and this parameter is optional.");
+									break;
+								default:
+									socket.emit("receive", "error", `Error: ${messageArray[1]} is not a command.`);
+							}
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 or 1 arguments. You gave ${messageArray.length - 1}.`);
+						}
+
+						break;
+					case "/il":
+					case "/invitelink":
+						socket.emit("checkURL", (response) => {
+							if (response == "scot.butzbach.net") {
+								socket.emit("receive", "message", `Copy this link: https://${response}/chat.php?code=${user.room}`);
+							} else {
+								socket.emit("receive", "message", `Copy this link: https://${response}/?code=${user.room}`);		
+							}
+						});
+						
+						break;
+					case "/ls":
+					case "/listsounds":
+						if (messageArray.length == 1) {
+							socket.emit("receive", "message", `Available sound phrases: ${sounds.join(", ")}`);
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
+						}
+						
+						break;
+					case "/pas":
+					case "/playallsounds":
+						if (messageArray.length == 1) {
+							io.in(user.room).emit("receive", "nonotification", `Server: OH NO! ${user.name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
 							await wait(500);
 							let shuffledSounds = shuffle(sounds.slice());
 							shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
 							for (let sound of shuffledSounds) {
-								io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+								io.in(user.room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 								await wait(Math.floor(Math.random() * 750) + 750);
 							}
 						} else {
 							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 0 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} catch (error) {
-						return;
-					}
-					
-					break;
-				case "/ps":
-				case "/playsound":
-					try {
+						
+						break;
+					case "/ps":
+					case "/playsound":
 						if (messageArray.length == 2) {
 							for (let sound of sounds) {
 								if (messageArray[1] == sound) {
 									if (messageArray[1] == "rickrolll") {
-										io.in(users[socket.id].room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you all.`);
+										io.in(user.room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${user.name} just rickrolled you all.`);
 									} else {
-										io.in(users[socket.id].room).emit("receive", "nonotification", `Server: ${users[socket.id].name} played "${sound}".`);
+										io.in(user.room).emit("receive", "nonotification", `Server: ${user.name} played "${sound}".`);
 									}
-									
+
 									await wait(500);
-									io.in(users[socket.id].room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
+									io.in(user.room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 									return;
 								}
 							}
-	
+
 							socket.emit("receive", "error", `Error: ${messageArray[1]} is not a sound phrase.`);
 						} else {
 							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 1 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} catch (error) {
-						return;
-					}
-					
-					break;
-				case "/pm":
-				case "/privatemessage":
-					if (messageArray.length >= 3) {
-						for (let id of Object.keys(users)) {
-							if (messageArray[1] == users[id].name && users[id].room == users[socket.id].room) {
-								if (messageArray[1] == users[socket.id].name) {
-									socket.emit("receive", "error", "Error: You can not send yourself a private message.");
-								} else {
-									privateMessage = messageArray.slice(2).join(" ");
-									if (rooms[users[id].room].chatFilter) {
-										io.in(id).emit("receive", "message", `Private message from ${users[socket.id].name}: ${clean(privateMessage)}`);
-										socket.emit("receive", "message", `Private message to ${users[id].name}: ${clean(privateMessage)}`);
+						
+						break;
+					case "/pm":
+					case "/privatemessage":
+						if (messageArray.length >= 3) {
+							for (let id of Object.keys(users)) {
+								if (messageArray[1] == users[id].name && users[id].room == user.room) {
+									if (messageArray[1] == user.name) {
+										socket.emit("receive", "error", "Error: You can not send yourself a private message.");
 									} else {
-										io.in(id).emit("receive", "message", `Private message from ${users[socket.id].name}: ${privateMessage}`);
-										socket.emit("receive", "message", `Private message to ${users[id].name}: ${privateMessage}`);
+										privateMessage = messageArray.slice(2).join(" ");
+										if (rooms[users[id].room].chatFilter) {
+											io.in(id).emit("receive", "message", `Private message from ${user.name}: ${clean(privateMessage)}`);
+											socket.emit("receive", "message", `Private message to ${users[id].name}: ${clean(privateMessage)}`);
+										} else {
+											io.in(id).emit("receive", "message", `Private message from ${user.name}: ${privateMessage}`);
+											socket.emit("receive", "message", `Private message to ${users[id].name}: ${privateMessage}`);
+										}
 									}
+									
+									return;
 								}
-								
-								return;
 							}
-						}
 
-						socket.emit("receive", "error", `Error: ${messageArray[1]} is not in this chat room.`);
-					} else {
-						socket.emit("receive", "error", `Error: ${messageArray[0]} takes at least 2 arguments. You gave ${messageArray.length - 1}.`);
-					}
-					
-					break;
-				case "/prs":
-				case "/privatesound":
-					try {
+							socket.emit("receive", "error", `Error: ${messageArray[1]} is not in this chat room.`);
+						} else {
+							socket.emit("receive", "error", `Error: ${messageArray[0]} takes at least 2 arguments. You gave ${messageArray.length - 1}.`);
+						}
+						
+						break;
+					case "/prs":
+					case "/privatesound":
 						if (messageArray.length == 3) {
 							for (let id of Object.keys(users)) {
-								if (messageArray[1] == users[id].name && users[id].room == users[socket.id].room) {
-									if (messageArray[1] == users[socket.id].name) {
+								if (messageArray[1] == users[id].name && users[id].room == user.room) {
+									if (messageArray[1] == user.name) {
 										socket.emit("receive", "error", "Error: You can not play yourself a private sound.");
 									} else {
 										for (let sound of sounds) {
 											if (messageArray[2] == sound) {
 												if (messageArray[2] == "rickrolll") {
-													io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${users[socket.id].name} just rickrolled you privately.`);
+													io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${user.name} just rickrolled you privately.`);
 													socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
 												} else {
-													io.in(id).emit("receive", "nonotification", `Private sound from ${users[socket.id].name}: \"${sound}\"`);
+													io.in(id).emit("receive", "nonotification", `Private sound from ${user.name}: \"${sound}\"`);
 													socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
 												}
-													
+
 												await wait(500);
 												io.in(id).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 												socket.emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
@@ -436,19 +444,15 @@ io.on("connection", (socket) => {
 									return;
 								}
 							}
-	
+
 							socket.emit("receive", "error", `Error: ${messageArray[1]} is not in the chat room.`);
 						} else {
 							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 2 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} catch (error) {
-						return;
-					}
-					
-					break;
-				case "/r":
-				case "/repeat":
-					try {
+						
+						break;
+					case "/r":
+					case "/repeat":
 						if (messageArray.length >= 4) {
 							if (parseInt(messageArray[1]) == NaN) {
 								socket.emit("receive", "error", `Error: The first argument is not a number.`);
@@ -457,7 +461,7 @@ io.on("connection", (socket) => {
 							} else {
 								if (messageArray.length > 4) {
 									const commandArgs = messageArray.slice(4).join(" ");
-	
+
 									for (let i = 0; i < parseInt(messageArray[1]); i++) {
 										socket.emit("repeat", messageArray[3], commandArgs);
 										await wait(parseInt(messageArray[2]) * 1000);
@@ -472,19 +476,17 @@ io.on("connection", (socket) => {
 						} else {
 							socket.emit("receive", "error", `Error: ${messageArray[0]} takes 4 arguments. You gave ${messageArray.length - 1}.`);
 						}
-					} catch (error) {
-						return;
-					}
-					
-					break;
-				default:
-					socket.emit("receive", "error", `Error: ${messageArray[0]} is not a command.`);
-			}
-		} else {
-			if (rooms[users[socket.id].room].chatFilter) {
-				io.in(users[socket.id].room).emit("receive", "message", `${users[socket.id].name}: ${clean(message)}`);
+						
+						break;
+					default:
+						socket.emit("receive", "error", `Error: ${messageArray[0]} is not a command.`);
+				}
 			} else {
-				io.in(users[socket.id].room).emit("receive", "message", `${users[socket.id].name}: ${message}`);
+				if (rooms[user.room].chatFilter) {
+					io.in(user.room).emit("receive", "message", `${user.name}: ${clean(message)}`);
+				} else {
+					io.in(user.room).emit("receive", "message", `${user.name}: ${message}`);
+				}
 			}
 		}
 	});
