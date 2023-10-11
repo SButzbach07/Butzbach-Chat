@@ -266,8 +266,33 @@ document.addEventListener("keypress", (event) => {
 });
 
 window.onload = () => {
-	receive("Welcome to Butzbach Chat. If you see this message, then there is a connection established with the server. To join a chat room, press the Chat Room button at the top of your screen. Create a chat room by providing a user name and a room name, or join a chat room by providing a user name and a room code. The side bar will provide information about the connected chat room. Use room code \"butzbach\" for the default chat room.", 440);
-	document.title = "Not Connected - Butzbach Chat";
+	let inviteRoomCode = new URLSearchParams(window.location.search);
+	if (inviteRoomCode.has("code")) {
+		let replacedURL = new String(window.location.href);
+		let valid = false;
+		let name;
+		while (valid == false) {
+			name = prompt("Enter a user name (40 characters max, no whitespace):");
+
+			if (name == null || name.length == 0) {
+				receive("Error: User name must be entered.", 349);
+			} else if (name.length > 40) {
+				receive("Error: User name exceeded the 40 character limit.", 349);
+			} else if (/\s/g.test(name)) {
+				receive("Error: User name contains whitespace.", 349);
+			} else {
+				valid = true;
+			}
+		}
+		
+		joinRoom(name, inviteRoomCode.get("code"));
+		replacedURL.replace(window.location.origin, "");
+		replacedURL.replace(window.location.search, "");
+		window.history.replaceState({}, "", replacedURL);
+	} else {
+		receive("Welcome to Butzbach Chat. If you see this message, then there is a connection established with the server. To join a chat room, press the Chat Room button at the top of your screen. Create a chat room by providing a user name and a room name, or join a chat room by providing a user name and a room code. The side bar will provide information about the connected chat room. Use room code \"butzbach\" for the default chat room.", 440);
+		document.title = "Not Connected - Butzbach Chat";
+	}
 }
 
 window.onclick = (event) => {
