@@ -268,6 +268,7 @@ document.addEventListener("keypress", (event) => {
 window.onload = () => {
 	let inviteRoomCode = new URLSearchParams(window.location.search);
 	if (inviteRoomCode.has("code")) {
+		let replacedURL = new String(window.location.href);
 		let valid = false;
 		let name;
 		while (valid == false) {
@@ -285,7 +286,9 @@ window.onload = () => {
 		}
 		
 		joinRoom(name, inviteRoomCode.get("code"));
-		window.history.replaceState({}, "", "/");
+		replacedURL.replace(window.location.origin, "");
+		replacedURL.replace(window.location.search, "");
+		window.history.replaceState({}, "", replacedURL);
 	} else {
 		receive("Welcome to Butzbach Chat. If you see this message, then there is a connection established with the server. To join a chat room, press the Chat Room button at the top of your screen. Create a chat room by providing a user name and a room name, or join a chat room by providing a user name and a room code. The side bar will provide information about the connected chat room. Use room code \"butzbach\" for the default chat room.", 440);
 		document.title = "Not Connected - Butzbach Chat";
