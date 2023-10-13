@@ -50,6 +50,7 @@ const sounds = [
 	"beeperror",
 	"boatsawed",
 	"bobeatbox",
+	"bonecrack",
 	"bonkdoooh",
 	"branpizza",
 	"brokentab",
