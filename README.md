@@ -87,6 +87,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * bobeatbox
 * bonecrack
 * bonkdoooh
+* boomvines
 * branpizza
 * brokentab
 * chorusaah
@@ -113,8 +114,9 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * getslaped
 * goatscrem
 * goodnight
+* goofyhorn
 * goofyslip
-* gooofhorn
+* goooofyah
 * hehehehaa
 * helicoptr
 * iamdaaone
@@ -125,6 +127,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * metalpipe
 * mjheheeee
 * ohhmahgod
+* ohhnoobro
 * olderinet
 * oooooooof
 * pstwostrt
