@@ -470,6 +470,9 @@ io.on("connection", (socket) => {
 							} else if (parseInt(messageArray[2]) == NaN) {
 								socket.emit("receive", "error", `Error: The second argument is not a number.`);
 							} else {
+								
+								io.in(user.room).emit("receive", "message", `${user.name} used ${messageArray[0]} to repeat the ${messageArray[3]} command ${messageArray[1]} time${(parseInt(messageArray[1]) == 1 ? "" : "s"} with a ${messageArray[2]} second${(parseInt(messageArray[2]) == 1 ? "" : "s")} delay in between.`);
+								
 								if (messageArray.length > 4) {
 									const commandArgs = messageArray.slice(4).join(" ");
 
