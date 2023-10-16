@@ -360,7 +360,7 @@ io.on("connection", (socket) => {
 					case "/pas":
 					case "/playallsounds":
 						if (messageArray.length == 1) {
-							io.in(user.room).emit("receive", "nonotification", `Server: OH NO! ${user.name} JUST USED THE "${messageArray[0]}" COMMAND! TURN DOWN YOUR VOLUME!`);
+							io.in(user.room).emit("receive", "nonotification", `Server: ${user.name} just used the ${messageArray[0]} command. Sound volume may vary.`);
 							await wait(500);
 							let shuffledSounds = shuffle(sounds.slice());
 							shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
@@ -381,7 +381,7 @@ io.on("connection", (socket) => {
 									if (messageArray[1] == "rickrolll") {
 										io.in(user.room).emit("receive", "nonotification", `Server: Enjoy these next three minutes and thirty seconds because ${user.name} just rickrolled you all.`);
 									} else {
-										io.in(user.room).emit("receive", "nonotification", `Server: ${user.name} played "${sound}".`);
+										io.in(user.room).emit("receive", "nonotification", `Server: ${user.name} played ${sound}.`);
 									}
 
 									await wait(500);
@@ -438,8 +438,8 @@ io.on("connection", (socket) => {
 													io.in(id).emit("receive", "nonotification", `Enjoy these next three minutes and thirty seconds because ${user.name} just rickrolled you privately.`);
 													socket.emit("receive", "nonotification", `You just rickrolled ${users[id].name} privately. I hope you're happy.`);
 												} else {
-													io.in(id).emit("receive", "nonotification", `Private sound from ${user.name}: \"${sound}\"`);
-													socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: \"${sound}"`);
+													io.in(id).emit("receive", "nonotification", `Private sound from ${user.name}: ${sound}`);
+													socket.emit("receive", "nonotification", `Private sound to ${users[id].name}: ${sound}`);
 												}
 
 												await wait(500);
@@ -471,7 +471,7 @@ io.on("connection", (socket) => {
 								socket.emit("receive", "error", `Error: The second argument is not a number.`);
 							} else {
 								
-								io.in(user.room).emit("receive", "message", `${user.name} used ${messageArray[0]} to repeat the ${messageArray[3]} command ${messageArray[1]} time${(parseInt(messageArray[1])) == 1 ? "" : "s"} with a ${messageArray[2]} second${(parseInt(messageArray[2])) == 1 ? "" : "s"} delay in between.`);
+								io.in(user.room).emit("receive", "message", `Server: ${user.name} used ${messageArray[0]} to repeat the ${messageArray[3]} command ${messageArray[1]} time${(parseInt(messageArray[1])) == 1 ? "" : "s"} with a ${messageArray[2]} second${(parseInt(messageArray[2])) == 1 ? "" : "s"} delay in between.`);
 								
 								if (messageArray.length > 4) {
 									const commandArgs = messageArray.slice(4).join(" ");
