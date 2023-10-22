@@ -86,6 +86,7 @@ const sounds = [
 	"hehehehaa",
 	"helicoptr",
 	"iamdaaone",
+	"itshinoon",
 	"jesussend",
 	"krabswalk",
 	"maaaaaaaa",
