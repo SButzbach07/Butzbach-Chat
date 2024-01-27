@@ -90,6 +90,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * boomvines
 * branpizza
 * brokentab
+* bruhhhhhh
 * chorusaah
 * cicecream
 * cocacolae
@@ -117,6 +118,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * goofyhorn
 * goofyslip
 * goooofyah
+* grimreper
 * hehehehaa
 * helicoptr
 * iamdaaone
@@ -127,14 +129,18 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * mccaveamb
 * metalpipe
 * mjheheeee
+* namejefff
 * ohhmahgod
 * ohhnoobro
 * olderinet
 * oooooooof
+* opennooor
+* pacertest
 * pstwostrt
 * rickrolll
 * rightback
 * rockbooom
+* runnbrunn
 * russmckid
 * sanstheme
 * sheeeeesh
@@ -152,6 +158,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * xpearrape
 * xperrsong
 * xpspamerr
+* yeeeeeeet
 * yellgoofy
 * yogotmail
 * zzzzsnore
