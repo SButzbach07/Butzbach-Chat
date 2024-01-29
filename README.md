@@ -72,96 +72,96 @@ This list contains every phrase that plays sounds instead of sending messages. I
 
 __Note:__ I do not own any of these sounds. They belong to their creators. I use them intentionally for others to entertain themselves while using this app.
 
-* aaaaaaaaa
-* ahogrider
-* alrtsiren
-* amogusjbd
-* amogusjob
-* amogusmix
-* amogusrep
-* auuuuuugh
-* ballerbmm
-* beeeeeeep
-* beeperror
-* boatsawed
-* bobeatbox
-* bonecrack
-* bonkdoooh
-* boomvines
-* branpizza
-* brokentab
-* bruhhhhhh
-* chorusaah
-* cicecream
-* cocacolae
-* continued
-* damagelot
-* dasideeye
-* deadmario
-* depotheme
-* discorddm
-* discordin
-* discordrc
-* distractd
-* emodamage
-* evictroom
-* fartsound
-* firealarm
-* fnbattleb
-* fnbattlep
-* garbageee
-* gcosndwch
-* gdrviolin
-* getslaped
-* goatscrem
-* goodnight
-* goofyhorn
-* goofyslip
-* goooofyah
-* grimreper
-* hehehehaa
-* helicoptr
-* iamdaaone
-* itshinoon
-* jesussend
-* krabswalk
-* maaaaaaaa
-* mccaveamb
-* metalpipe
-* mjheheeee
-* namejefff
-* ohhmahgod
-* ohhnoobro
-* olderinet
-* oooooooof
-* opennooor
-* pacertest
-* pstwostrt
-* rickrolll
-* rightback
-* rockbooom
-* runnbrunn
-* russmckid
-* sanstheme
-* sheeeeesh
-* skibisong
-* spotifyad
-* stickykey
-* stoooopid
-* tacobelll
-* thxmtheme
-* vadernooo
-* vsaucehey
-* wompwwomp
-* xpcritbat
-* xpcriterr
-* xpearrape
-* xperrsong
-* xpspamerr
-* yeeeeeeet
-* yellgoofy
-* yogotmail
-* zzzzsnore
+* aaa
+alertsiren
+amongusjobreveal
+amongusjobrevealdistorted
+amongusremix
+amongusreport
+baller
+bingchilling
+bombasticsideeye
+bonk
+branspizzapalace
+brokenbones
+brokentable
+bruh
+censored
+clashroyalelaugh
+cocacolaespuma
+comedicslip
+darthvadernoo
+dialupsound
+discordincomingcall
+discordping
+discordrareincomingcall
+distractdance
+emotionaldamage
+errorglove
+fart
+firealarm
+fortnitebattlebus
+fortnitebattlepass
+goatscreaming
+goodnightgirl
+goofycarhorn
+goofyyell
+gordonramsayviolin
+grilledcheeseobamasandwich
+grimreaper
+heavenlychorus
+helicopter
+heyvsauce
+hogrider
+homedepottheme
+iamdaone
+implayingminecraft
+itshighnoon
+lotofdamage
+loudsnoring
+loudwhistlesnoring
+maaascream
+mariodeathsound
+megalovania
+metalpipe
+michaeljacksonhehe
+minecraftcaveambience
+mrkrabswalk"
+mynameisjeff
+obamabeatbox
+ohmahgod
+ohnobro
+openthenoor
+pacertest
+pstwoboot
+rickroll
+robloxoof
+rockboom
+runcensoredrun
+sawboatinhalf
+scoobydolaugh
+screamingrussianminecraftkid
+sendyoutojesus
+sheeesh
+skibisong
+slap
+stickykey
+stillapieceofgarbage
+stupid
+tacobellbong
+thxmovietheme
+tobecontinued
+trombonefail
+vineboom
+wantabreakfromtheads
+wellberightback
+xpcriticalbattery
+xpcriticalerror
+xperrorsong
+xperrorspam
+xpstartupearrape
+yeet
+yougotmail
 
 ## Changes to app hosting
 
