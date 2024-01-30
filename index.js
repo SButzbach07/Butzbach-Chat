@@ -378,7 +378,7 @@ io.on("connection", (socket) => {
 							io.in(user.room).emit("receive", "nonotification", `Server: ${user.name} just used the ${messageArray[0]} command. Sound volume may vary.`);
 							await wait(500);
 							let shuffledSounds = shuffle(sounds.slice());
-							shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickrolll";}), 1);
+							shuffledSounds.splice(shuffledSounds.findIndex((value) => {return value == "rickroll";}), 1);
 							for (let sound of shuffledSounds) {
 								io.in(user.room).emit("receive", "sound", `https://scot.butzbach.net/projects/butzbach_chat/sounds/${sound}.mp3`);
 								await wait(Math.floor(Math.random() * 750) + 750);
