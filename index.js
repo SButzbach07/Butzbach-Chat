@@ -51,6 +51,7 @@ const sounds = [
 	"brokenbones",
 	"brokentable",
 	"bruh",
+	"byehaveagreattime",
 	"censored",
 	"clashroyalelaugh",
 	"cocacolaespuma",
