@@ -73,95 +73,102 @@ This list contains every phrase that plays sounds instead of sending messages. I
 __Note:__ I do not own any of these sounds. They belong to their creators. I use them intentionally for others to entertain themselves while using this app.
 
 * aaa
-alertsiren
-amongusjobreveal
-amongusjobrevealdistorted
-amongusremix
-amongusreport
-baller
-bingchilling
-bombasticsideeye
-bonk
-branspizzapalace
-brokenbones
-brokentable
-bruh
-censored
-clashroyalelaugh
-cocacolaespuma
-comedicslip
-darthvadernoo
-dialupsound
-discordincomingcall
-discordping
-discordrareincomingcall
-distractdance
-emotionaldamage
-errorglove
-fart
-firealarm
-fortnitebattlebus
-fortnitebattlepass
-goatscreaming
-goodnightgirl
-goofycarhorn
-goofyyell
-gordonramsayviolin
-grilledcheeseobamasandwich
-grimreaper
-heavenlychorus
-helicopter
-heyvsauce
-hogrider
-homedepottheme
-iamdaone
-implayingminecraft
-itshighnoon
-lotofdamage
-loudsnoring
-loudwhistlesnoring
-maaascream
-mariodeathsound
-megalovania
-metalpipe
-michaeljacksonhehe
-minecraftcaveambience
-mrkrabswalk"
-mynameisjeff
-obamabeatbox
-ohmahgod
-ohnobro
-openthenoor
-pacertest
-pstwoboot
-rickroll
-robloxoof
-rockboom
-runcensoredrun
-sawboatinhalf
-scoobydolaugh
-screamingrussianminecraftkid
-sendyoutojesus
-sheeesh
-skibisong
-slap
-stickykey
-stillapieceofgarbage
-stupid
-tacobellbong
-thxmovietheme
-tobecontinued
-trombonefail
-vineboom
-wantabreakfromtheads
-wellberightback
-xpcriticalbattery
-xpcriticalerror
-xperrorsong
-xperrorspam
-xpstartupearrape
-yeet
-yougotmail
+* alertsiren
+* amongusjobreveal
+* amongusjobrevealdistorted
+* amongusremix
+* amongusreport
+* baller
+* bingchilling
+* bombasticsideeye
+* bonk
+* branspizzapalace
+* brokenbones
+* brokentable
+* bruh
+* censored
+* clashroyalelaugh
+* cocacolaespuma
+* comedicslip
+* darthvadernoo
+* dialupsound
+* discordhalloweenincomingcall
+* discordincomingcall
+* discordping
+* discordrareincomingcall
+* distractdance
+* emotionaldamage
+* errorglove
+* fart
+* fbiopenup
+* firealarm
+* fortnitebattlebus
+* fortnitebattlepass
+* goatscreaming
+* goodnightgirl
+* goofycarhorn
+* goofyyell
+* gordonramsayviolin
+* grilledcheeseobamasandwich
+* grimreaper
+* halloween
+* heavenlychorus
+* helicopter
+* heyvsauce
+* hogrider
+* homedepottheme
+* iamdaone
+* ilovetrees
+* implayingminecraft
+* itshighnoon
+* lotofdamage
+* loudsnoring
+* loudwhistlesnoring
+* maaascream
+* mariodeathsound
+* megalovania
+* metalpipe
+* michaeljacksonhehe
+* microwave
+* minecraftcaveambience
+* mrkrabswalk
+* mynameisjeff
+* obamabeatbox
+* ohmahgod
+* ohnobro
+* openthenoor
+* pacertest
+* pstwoboot
+* rickroll
+* robloxoof
+* rockboom
+* runcensoredrun
+* sawboatinhalf
+* scoobydolaugh
+* screamingrussianminecraftkid
+* sendyoutojesus
+* sheeesh
+* skibisong
+* slap
+* stickykey
+* stillapieceofgarbage
+* stoppostingaboutamongus
+* stupid
+* tacobellbong
+* thxmovietheme
+* tobecontinued
+* trombonefail
+* ohohstinky
+* vineboom
+* wantabreakfromtheads
+* wellberightback
+* xpcriticalbattery
+* xpcriticalerror
+* xperrorsong
+* xperrorspam
+* xpstartupearrape
+* yeet
+* yougotmail
 
 ## Changes to app hosting
 
