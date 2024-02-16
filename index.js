@@ -117,6 +117,7 @@ const sounds = [
 	"runcensoredrun",
 	"sawboatinhalf",
 	"scoobydolaugh",
+	"scotdistortedmessage",
 	"screamingrussianminecraftkid",
 	"sendyoutojesus",
 	"sheeesh",

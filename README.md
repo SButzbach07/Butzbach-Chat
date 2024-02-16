@@ -152,6 +152,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * runcensoredrun
 * sawboatinhalf
 * scoobydolaugh
+* scotdistortedmessage
 * screamingrussianminecraftkid
 * sendyoutojesus
 * sheeesh
