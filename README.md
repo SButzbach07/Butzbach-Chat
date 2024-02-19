@@ -70,7 +70,7 @@ This list contains every command on the chat. Each commands has its syntax, what
 
 This list contains every phrase that plays sounds instead of sending messages. If you noticed they're all nine letter long and has no whitespace anywhere. You can also use the `/listsounds` command to list the sounds while in the chat app.
 
-__Note:__ I do not own any of these sounds. They belong to their creators. I use them intentionally for others to entertain themselves while using this app.
+__Note:__ Almost all of these sounds came from [Voicemod](https://tuna.voicemod.net). loudwhistlesnoring came from the [Slap Battles Wiki](https://roblox-slap-battles.fandom.com/wiki/Error). I recorded scotdistortedmessage using Audacity and a Bluetooth speaker that came with a mic.
 
 * aaa
 * alertsiren
