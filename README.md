@@ -103,6 +103,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * errorglove
 * fart
 * fbiopenup
+* finishcriossant
 * firealarm
 * fortnitebattlebus
 * fortnitebattlepass
@@ -111,6 +112,7 @@ __Note:__ I do not own any of these sounds. They belong to their creators. I use
 * goofycarhorn
 * goofyyell
 * gordonramsayviolin
+* gotouchgrass
 * grilledcheeseobamasandwich
 * grimreaper
 * halloween
