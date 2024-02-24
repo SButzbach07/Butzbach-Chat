@@ -120,6 +120,7 @@ const sounds = [
 	"sawboatinhalf",
 	"scoobydolaugh",
 	"scotdistortedmessage",
+	"scotrandom",
 	"screamingrussianminecraftkid",
 	"sendyoutojesus",
 	"sheeesh",
