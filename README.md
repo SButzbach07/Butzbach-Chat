@@ -148,6 +148,7 @@ __Note:__ Almost all of these sounds came from [Voicemod](https://tuna.voicemod.
 * openthenoor
 * pacertest
 * pstwoboot
+* psycho
 * rickroll
 * robloxoof
 * rockboom
@@ -161,6 +162,7 @@ __Note:__ Almost all of these sounds came from [Voicemod](https://tuna.voicemod.
 * sheeesh
 * skibisong
 * slap
+* soda
 * squidwardbandclass
 * stickykey
 * stillapieceofgarbage
